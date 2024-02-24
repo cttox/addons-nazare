@@ -1,11 +1,22 @@
 # Copyright 2024, Cesar Barron
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import api, models
+from odoo import fields, api, models
 
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
+
+    lot_id = fields.Many2one(
+        'stock.lot',
+        string='Lot number',
+    )
+
+    date_expiry = fields.Date(
+        string='Date expiration',
+        related='lot_id.expiration_date',
+    )
+
 
     @api.onchange('product_id', 'product_uom_qty')
     def _onchange_product_quantity(self):
@@ -36,5 +47,7 @@ class SaleOrderLine(models.Model):
 
             # lot_names = ', '.join([lot.name for lot, qty in lot_list])
             if lot_list:
-                self.update({'x_studio_lote': lot_list[0][0].id,
-                             'x_studio_fecha_de_caducidad': lot_list[0][0].expiration_date})
+                self.update({'lot_id': lot_list[0][0].id})
+
+                # self.update({'x_studio_lote': lot_list[0][0].id,
+                #              'x_studio_fecha_de_caducidad': lot_list[0][0].expiration_date})
