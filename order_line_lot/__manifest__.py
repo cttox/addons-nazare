@@ -10,7 +10,7 @@
     'author': "Cesar Barron",
     'depends': ['sale'],
     'data': [
-        'views/sale_order_view.xml',
+        # 'views/sale_order_view.xml',
     ],
     'assets': {
     },
