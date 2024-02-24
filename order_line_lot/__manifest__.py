@@ -1,12 +1,13 @@
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Copyright 2024, Cesar Barron
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 {
-    'name': 'Order line lot',
-    'version': '1.0',
+    'name': 'Sale order line lot number',
+    'version': '1.0.0.0',
     'category': 'Sales/Sales',
     'summary': '',
-    'description': """""",
-    'author': "",
+    'description': "Retrieve the lot number and expiry date from lot into the sale order line",
+    'author': "Cesar Barron",
     'depends': ['sale'],
     'data': [
     ],
