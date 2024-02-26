@@ -12,10 +12,15 @@ class SaleOrderLine(models.Model):
         lot_list = []
         remaining_qty = self.product_uom_qty
         if self.product_id:
+            values = self._prepare_procurement_values(group_id=False)
+            rule = self.env['procurement.group']._get_rule(
+                self.product_id, self.order_id.partner_shipping_id.property_stock_customer, values)
+
             # Get the stock quants for the product, FIFO ordered
             quants = self.env['stock.quant'].search([
                 ('product_id', '=', self.product_id.id),
-                ('quantity', '>', 0)
+                ('quantity', '>', 0),
+                ('location_id', '=', rule.location_src_id.id)
             ], order='in_date ASC')
 
             # Loop through the quants to fulfill the order line quantity using FIFO
