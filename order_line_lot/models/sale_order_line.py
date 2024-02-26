@@ -7,17 +7,6 @@ from odoo import fields, api, models
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    # lot_id = fields.Many2one(
-    #     'stock.lot',
-    #     string='Lot number',
-    # )
-
-    # date_expiry = fields.Date(
-    #     string='Date expiration',
-    #     related='lot_id.expiration_date',
-    # )
-
-
     @api.onchange('product_id', 'product_uom_qty')
     def _onchange_product_quantity(self):
         lot_list = []
