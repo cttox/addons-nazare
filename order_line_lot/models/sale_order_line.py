@@ -1,47 +1,52 @@
 # Copyright 2024, Cesar Barron
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import fields, api, models
+from odoo import models
 
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
 
-class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
+    def action_confirm(self):
+        for order in self:
+            # Logic for splitting sale order lines
+            for line in order.order_line:
+                product = line.product_id
+                if product.tracking == 'lot':
+                    values = line._prepare_procurement_values(group_id=False)
+                    rule = self.env['procurement.group']._get_rule(
+                        line.product_id, self.partner_shipping_id.property_stock_customer, values)
 
-    @api.onchange('product_id', 'product_uom_qty')
-    def _onchange_product_quantity(self):
-        lot_list = []
-        remaining_qty = self.product_uom_qty
-        if self.product_id:
-            values = self._prepare_procurement_values(group_id=False)
-            rule = self.env['procurement.group']._get_rule(
-                self.product_id, self.order_id.partner_shipping_id.property_stock_customer, values)
+                    # Get the stock quants for the product, FIFO ordered
+                    quants = self.env['stock.quant'].search([
+                        ('product_id', '=', line.product_id.id),
+                        ('quantity', '>', 0),
+                        ('location_id', '=', rule.location_src_id.id)
+                    ], order='in_date ASC')
 
-            # Get the stock quants for the product, FIFO ordered
-            quants = self.env['stock.quant'].search([
-                ('product_id', '=', self.product_id.id),
-                ('quantity', '>', 0),
-                ('location_id', '=', rule.location_src_id.id)
-            ], order='in_date ASC')
+                    total_qty = line.product_uom_qty
+                    for quant in quants:
+                        if total_qty <= 0:
+                            break  # All product quantity has been assigned
 
-            # Loop through the quants to fulfill the order line quantity using FIFO
-            for quant in quants:
-                if remaining_qty <= 0:
-                    break
-                quant_qty = quant.quantity
-                if quant_qty <= remaining_qty:
-                    lot_list.append((quant.lot_id, quant_qty))
-                    remaining_qty -= quant_qty
-                else:
-                    lot_list.append((quant.lot_id, remaining_qty))
-                    remaining_qty = 0
+                        lot_qty = min(quant.quantity, total_qty)
+                        total_qty -= lot_qty
 
-            # Now, you can use lot_list to update lot information in your order line
-            # Note: You will have to consider how to handle displaying multiple lots in your view.
-            # This could involve adding a One2many field to handle lot details.
+                        # Create a new sale order line with the lot and the lot_qty
+                        self.env['sale.order.line'].create({
+                            'order_id': order.id,
+                            'product_id': product.id,
+                            'product_uom_qty': lot_qty,
+                            'x_studio_lote': quant.lot_id.id,
+                            'x_studio_fecha_de_caducidad': quant.lot_id.expiration_date,
+                            # Add other necessary fields here
+                        })
 
-            # lot_names = ', '.join([lot.name for lot, qty in lot_list])
-            if lot_list:
-                # self.update({'lot_id': lot_list[0][0].id})
+                    # Either reduce the quantity of the original line or delete it
+                    if total_qty <= 0:
+                        line.unlink()  # Delete the line if fully split
+                    else:
+                        line.write({'product_uom_qty': total_qty})
 
-                self.update({'x_studio_lote': lot_list[0][0].id,
-                             'x_studio_fecha_de_caducidad': lot_list[0][0].expiration_date})
+            # Call the original confirm action at the end
+            super(SaleOrder, order).action_confirm()
+        return True
