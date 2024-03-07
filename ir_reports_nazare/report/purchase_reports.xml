@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data>
-        <record id="purchase.report_purchase_quotation" model="ir.actions.report">
-            <field name="paperformat_id" ref="ir_reports_nazare.paperformat_euro_nazare"/>
-        </record>
-    </data>
-</odoo>
