@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_purchasequotation_nazare_document" inherit_id="purchase.report_purchasequotation_document">
+            <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
+                <attribute name="t-call">ir_reports_nazare.external_layout_nazare</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('page')]/h2[hasclass('mt-4')]" position="replace">
+                <h2 class="mt-4">Pedido de compra <span t-field="o.name"/></h2>
+            </xpath>
+            <xpath expr="//div[hasclass('page')]/h2[hasclass('mt-4')]" position="after">
+                <div class="row">
+                    <div class="col-5">
+                        Fecha confirmación: <span t-esc="o.date_order.date()" t-options='{"widget": "date"}'/>
+                    </div>
+                    <div class="col-5">
+                        Entrega esperada: <span t-esc="o.date_approve.date()" t-options='{"widget": "date"}'/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//table/thead/tr/th[@name='th_expected_date']" position="replace">
+                <th name="th_expected_date" class="text-center"><strong>Cantidad de embalaje</strong></th>
+                <th name="th_expected_date" class="text-center"><strong>Empaquetado</strong></th>
+            </xpath>
+            <xpath expr="//table/tbody/t/tr/t/td[hasclass('text-center')]" position="replace">
+                <td id="product" class="text-center">
+                    <span t-field="order_line.product_packaging_qty"/>
+                </td>
+                <td id="product" class="text-center">
+                    <span t-field="order_line.product_packaging_id"/>
+                </td>
+            </xpath>
+        </template>
+    </data>
+</odoo>
