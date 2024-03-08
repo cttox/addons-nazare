@@ -14,7 +14,7 @@
                         Fecha confirmación: <span t-esc="o.date_order.date()" t-options='{"widget": "date"}'/>
                     </div>
                     <div class="col-5">
-                        Entrega esperada: <span t-esc="o.date_approve.date()" t-options='{"widget": "date"}'/>
+                        Entrega esperada: <span t-esc="o.date_planned.date()" t-options='{"widget": "date"}' t-if="o.date_planned"/>
                     </div>
                 </div>
             </xpath>
