@@ -30,6 +30,9 @@
                     <span t-field="order_line.product_packaging_id"/>
                 </td>
             </xpath>
+            <xpath expr="//table/tbody/t/tr/t/td[hasclass('text-end')]/span" position="replace">
+                <span t-esc="order_line.product_qty" t-options='{"widget": "float", "precision": 2}'/>
+            </xpath>
         </template>
     </data>
 </odoo>
