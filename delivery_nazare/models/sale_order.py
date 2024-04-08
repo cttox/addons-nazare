@@ -15,6 +15,8 @@ class SaleOrder(models.Model):
         if carrier.delivery_type != 'base_on_rule':
             return res
         vals = self.carrier_id.base_on_rule_rate_shipment_nazare(self)
-        name = (res['name'], vals['name_carrier'])
-        res['name'] = ' - '.join(name)
+        name_carrier = vals.get('name_carrier', False)
+        if name_carrier:
+            name = (res['name'], name_carrier)
+            res['name'] = ' - '.join(name)
         return res
