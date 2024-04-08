@@ -10,6 +10,11 @@ class SaleOrder(models.Model):
     def _prepare_delivery_line_vals(self, carrier, price_unit):
 
         res = super()._prepare_delivery_line_vals(carrier, price_unit)
-        vals = self.carrier_id.rate_shipment(self.id)
-        import ipdb; ipdb.set_trace()
+
+        # Nazare new methos will only works on "Baed on rule" delivery types
+        if carrier.delivery_type != 'base_on_rule':
+            return res
+        vals = self.carrier_id.base_on_rule_rate_shipment_nazare(self)
+        name = (res['name'], vals['name_carrier'])
+        res['name'] = ' - '.join(name)
         return res
