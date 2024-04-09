@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_pro_forma_nazare" inherit_id="sale.report_saleorder_pro_forma">
+            <xpath expr="//t[@t-call='sale.report_saleorder_document']" position="attributes">
+                <attribute name="t-call">studio_customization.studio_report_docume_a99fbce4-68c0-42b9-8094-6095f5772a3e</attribute>
+            </xpath>
+        </template>
+    </data>
+</odoo>

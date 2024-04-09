@@ -12,6 +12,7 @@
     'data': [
         'report/qweb_layout.xml',
         'report/purchase_reports.xml',
+        'report/sale_reports.xml',
     ],
     'assets': {
     },
