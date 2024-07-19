@@ -1,0 +1,19 @@
+<odoo>
+    <report
+        id="report_label_master"
+        string="Master Box Label"
+        model="product.label.wizard"
+        report_type="qweb-pdf"
+        name="product_label_wizard.report_label_master_template"
+        file="product_label_wizard.report_label_master_template"
+    />
+
+    <report
+        id="report_label_granel"
+        string="In Bulk Label"
+        model="product.label.wizard"
+        report_type="qweb-pdf"
+        name="product_label_wizard.report_label_granel_template"
+        file="product_label_wizard.report_label_granel_template"
+    />
+</odoo>

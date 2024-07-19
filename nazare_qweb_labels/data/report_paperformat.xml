@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="False">
+        <record id="paperformat_tag_6x6_cm" model="report.paperformat">
+            <field name="name">Tag 6X6 CM</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">60</field>
+            <field name="page_width">60</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+    </data>
+</odoo>
