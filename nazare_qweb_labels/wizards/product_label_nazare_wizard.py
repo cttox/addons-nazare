@@ -1,11 +1,18 @@
 # Copyright 2024, Cesar Barron
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import fields, models, api
+from odoo import fields, models
 
 class ProductLabelWizard(models.TransientModel):
-    _name = 'product.label.wizard'
-    _description = 'Product Label Wizard'
+    _name = 'product.label.layout.nazare'
+    _description = 'Product Label Nazare'
+
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string='Company',
+        default=lambda self: self.env.user.company_id,
+        readonly=True
+    )
 
     product_id = fields.Many2one(
         'product.product',
@@ -16,13 +23,13 @@ class ProductLabelWizard(models.TransientModel):
     lot_id = fields.Many2one(
         'stock.lot',
         string='Lot',
-        domain="[('product_id', '=', product_id),('quantity', '>', 0)]",
+        domain="[('product_id', '=', product_id),('product_qty', '>', 0)]",
         required=True
     )
 
     use_date = fields.Datetime(
         string='Use date',
-        related='lote_id.use_date',
+        related='lot_id.use_date',
         readonly=True
     )
 
@@ -48,7 +55,7 @@ class ProductLabelWizard(models.TransientModel):
         readonly=True
     )
 
-    description_pickingout = fields.Char(
+    description_pickingout = fields.Text(
         string='Description Picking Out',
         related='product_id.description_pickingout',
         readonly=False
@@ -62,14 +69,13 @@ class ProductLabelWizard(models.TransientModel):
     label_type = fields.Selection([
         ('master_box', 'Master Box'),
         ('in_bulk', 'In Bulk')
-    ], string='Label type', required=True)
+    ], string='Label type', required=True, default='master_box')
 
-    @api.multi
     def print(self):
         self.ensure_one()
-        if self.tipo_de_etiqueta == 'master_box':
+        if self.label_type == 'master_box':
             return self.env.ref(
-                'product_label_wizard.report_label_master').report_action(self)
+                'nazare_qweb_labels.report_label_master').report_action(self)
         else:
             return self.env.ref(
-                'product_label_wizard.report_label_granel').report_action(self)
+                'nazare_qweb_labels.report_label_granel').report_action(self)

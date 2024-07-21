@@ -1,15 +1,18 @@
 <odoo>
-    <record id="view_template_property_form" model="ir.ui.view">
+    <record id="product_normal_form_view" model="ir.ui.view">
         <field name="name">product.product.form.inherit</field>
         <field name="model">product.product</field>
-        <field name="inherit_id" ref="stock.view_template_property_form"/>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
             <data>
-                <page name="inventory" position="inside">
+                <header position="inside">
+                    <button string="Print Labels Nazare" type="object" name="action_open_label_layout_nazare"/>
+                </header>
+                <xpath expr="//page[@name='inventory']" position="inside">
                     <group string="Ingredients">
-                        <field name="ingredients"/>
+                        <field name="ingredients" widget="html"/>
                     </group>
-                </page>
+                </xpath>
             </data>
         </field>
     </record>

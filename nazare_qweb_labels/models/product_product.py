@@ -9,3 +9,9 @@ class ProductProduct(models.Model):
     ingredients = fields.Html(
         string='Ingredients'
     )
+
+    def action_open_label_layout_nazare(self):
+        action = self.env['ir.actions.act_window']._for_xml_id(
+            'nazare_qweb_labels.action_open_label_layout_nazare')
+        action['context'] = {'default_product_id': self.id}
+        return action

@@ -1,26 +1,47 @@
 <odoo>
-    <record id="view_product_label_wizard_form" model="ir.ui.view">
-        <field name="name">product.label.wizard.form</field>
-        <field name="model">product.label.wizard</field>
+    <record id="product_label_layout_nazare_form" model="ir.ui.view">
+        <field name="name">product.label.layout.nazare.form</field>
+        <field name="model">product.label.layout.nazare</field>
+        <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <form string="Product Label Wizard">
+            <form>
                 <group>
-                    <field name="product_id"/>
-                    <field name="lot_id"/>
-                    <field name="use_date"/>
-                    <field name="quantity"/>
-                    <field name="uom_id"/>
-                    <field name="ingredients"/>
-                    <field name="rdgs"/>
-                    <field name="description_pickingout"/>
-                    <field name="title"/>
-                    <field name="label_type"/>
+                    <group>
+                        <field name="company_id"/>
+                    </group>
+                    <group>
+                        <field name="title"/>
+                        <field name="product_id" readonly="1"/>
+                        <field name="lot_id"/>
+                        <field name="use_date"/>
+                    </group>
+                    <group>
+                        <field name="quantity"/>
+                        <field name="uom_id"/>
+                        <field name="rdgs"/>
+                        <field name="label_type" widget="radio"/>
+                    </group>
+                    <group>
+                        <field name="ingredients" widget="html" attrs="{'invisible': [('label_type', '!=', 'in_bulk')]}"/>
+                    </group>
+                    <group>
+                        <field name="description_pickingout"/>
+                    </group>
                 </group>
                 <footer>
-                    <button string="Print" type="object" name="print" class="btn-primary"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button name="print" string="Print" type="object" class="btn-primary"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>
+    </record>
+
+    <record id="action_open_label_layout_nazare" model="ir.actions.act_window">
+        <field name="name">Choose Labels Layout</field>
+        <field name="res_model">product.label.layout.nazare</field>
+        <field name="view_ids"
+                eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('product_label_layout_nazare_form')})]" />
+        <field name="target">new</field>
     </record>
 </odoo>
