@@ -49,6 +49,12 @@ class ProductLabelWizard(models.TransientModel):
         readonly=False
     )
 
+    barcode = fields.Char(
+        string='Barcode',
+        related='product_id.barcode',
+        readonly=False
+    )
+
     rdgs = fields.Char(
         string='R.D.G.S',
         related='company_id.rdgs',
