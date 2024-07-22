@@ -1,0 +1,21 @@
+<odoo>
+    <report
+        id="report_label_master"
+        string="Master Box Label"
+        model="product.label.layout.nazare"
+        report_type="qweb-pdf"
+        name="nazare_qweb_labels.report_label_master_template"
+        file="nazare_qweb_labels.report_label_master_template"
+        paperformat="nazare_qweb_labels.paperformat_tag_6x6_cm"
+    />
+
+    <report
+        id="report_label_granel"
+        string="In Bulk Label"
+        model="product.label.layout.nazare"
+        report_type="qweb-pdf"
+        name="nazare_qweb_labels.report_label_granel_template"
+        file="nazare_qweb_labels.report_label_granel_template"
+        paperformat="nazare_qweb_labels.paperformat_tag_6x6_cm"
+    />
+</odoo>

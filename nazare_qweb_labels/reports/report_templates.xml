@@ -1,0 +1,82 @@
+<odoo>
+    <template id="report_label_base_document">
+        <div class="page" style="font-size: 9pt;">
+            <t t-set="barcode_size" t-value="'width:33mm;height:14mm'"/>
+            <t t-set="table_style" t-value="'width:97mm;height:37.1mm;'"/>
+            <t t-set="full_width" t-value="True"/>
+            <td t-att-style="make_invisible and 'visibility:hidden;'" >
+                <!--div class="o_label_full" t-att-style="table_style"-->
+                <div>
+                    <div class="o_label_data">
+                        <table width="100%" class="table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="text-start"><strong>Contenido:</strong></td>
+                                    <td class="text-end"><span t-esc="str(doc.quantity) + ' ' + doc.uom_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start"><strong>Lote:</strong></td>
+                                    <td class="text-end"><span t-esc="doc.lot_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start"><strong>Consumir preferentemente antes del:</strong></td>
+                                    <td class="text-end"><span t-esc="doc.use_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start"><strong>R.D.G.S.:</strong></td>
+                                    <td class="text-end"><span t-esc="doc.rdgs"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-if="doc.label_type == 'master_box'">
+                            <div class="d-block mx-auto" style="text-align: center; width: fit-content;">
+                                <div t-out="doc.product_id.barcode" t-options="{'widget': 'barcode', 'symbology': 'auto', 'img_style': barcode_size}"/>
+                                <span class="text-center" t-out="doc.product_id.barcode"/>
+                            </div>
+                        </t>
+                        <t t-if="doc.label_type == 'in_bulk'">
+                            <div class="d-block mx-auto" style="text-align: left; width: fit-content; font-size: 8pt;">
+                                <strong>Ingredientes:</strong><span t-esc="doc.ingredients"/>
+                            </div>
+                            <!--table width="100%" class="table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start"><strong>Ingredientes:</strong><span t-esc="doc.ingredients"/></td>
+                                    </tr>
+                                </tbody>
+                            </table-->
+                        </t>
+                        <div class="text-center">
+                            <t t-out="doc.description_pickingout"/>
+                        </div>
+                        <div class="o_label_name text-center" style="font-size: 6.5pt;">
+                            <span>Calle Real 110, 24199, Castrillo de la Ribera, León</span>
+                            <span>Tfono: 987264285 mail: nazare@hojaldresnazare.es</span>
+                            <span>www.nazaremayorista.com</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </div>
+    </template>
+
+    <template id="report_label_master_template">
+        <t t-call="web.html_container">
+            <t t-call="nazare_qweb_labels.report_tag_layout_empty">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="nazare_qweb_labels.report_label_base_document"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_label_granel_template">
+        <t t-call="web.html_container">
+            <t t-call="nazare_qweb_labels.report_tag_layout_empty">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="nazare_qweb_labels.report_label_base_document"/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
