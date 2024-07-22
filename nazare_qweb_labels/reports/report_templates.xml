@@ -1,101 +1,76 @@
 <odoo>
     <template id="report_label_base_document">
-        <div class="page">
-            <div class="row no-gutters" style="border-left: 1px solid #000000;border-right: 1px solid #000000;">
-                <div class="col-4 m-2">
-                    <table width="100%" height="185px"  style="border: 1px solid #000000;margin-top: 12px;">
-                        <tbody>
-                            <tr>
-                                <td height="15px" style="background: black;color: white;" align="center">Contenido:</td>
-                            </tr>
-                            <tr>
-                                <td align="center" style="width:100px; word-wrap: break-word;" height="40px"><span align="center" class="medium" style="width:100px; word-wrap: break-word; font-size: 16px" t-field="doc.quantity"/></td>
-                            </tr>
-                            <tr>
-                                <td height="15px" style="background: black;color: white;" align="center">Lote:</td>
-                            </tr>
-                            <tr>
-                                <td height="15px" align="center"><span align="center" class="medium" style="width:100px; word-wrap: break-word; font-size: 16px" t-field="doc.lot_id."/></td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="page" style="font-size: 9pt;">
+            <t t-set="barcode_size" t-value="'width:33mm;height:14mm'"/>
+            <t t-set="table_style" t-value="'width:97mm;height:37.1mm;'"/>
+            <t t-set="full_width" t-value="True"/>
+            <td t-att-style="make_invisible and 'visibility:hidden;'" >
+                <!--div class="o_label_full" t-att-style="table_style"-->
+                <div>
+                    <div class="o_label_data">
+                        <table width="100%" class="table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="text-start"><strong>Contenido:</strong></td>
+                                    <td class="text-end"><span t-esc="str(doc.quantity) + ' ' + doc.uom_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start"><strong>Lote:</strong></td>
+                                    <td class="text-end"><span t-esc="doc.lot_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start"><strong>Consumir preferentemente antes del:</strong></td>
+                                    <td class="text-end"><span t-esc="doc.use_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start"><strong>R.D.G.S.:</strong></td>
+                                    <td class="text-end"><span t-esc="doc.rdgs"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-if="doc.label_type == 'master_box'">
+                            <div class="d-block mx-auto" style="text-align: center; width: fit-content;">
+                                <div t-out="doc.product_id.barcode" t-options="{'widget': 'barcode', 'symbology': 'auto', 'img_style': barcode_size}"/>
+                                <span class="text-center" t-out="doc.product_id.barcode"/>
+                            </div>
+                        </t>
+                        <t t-if="doc.label_type == 'in_bulk'">
+                            <div class="d-block mx-auto" style="text-align: left; width: fit-content; font-size: 8pt;">
+                                <strong>Ingredientes:</strong><span t-esc="doc.ingredients"/>
+                            </div>
+                            <!--table width="100%" class="table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start"><strong>Ingredientes:</strong><span t-esc="doc.ingredients"/></td>
+                                    </tr>
+                                </tbody>
+                            </table-->
+                        </t>
+                        <div class="text-center">
+                            <t t-out="doc.description_pickingout"/>
+                        </div>
+                        <div class="o_label_name text-center" style="font-size: 6.5pt;">
+                            <span>Calle Real 110, 24199, Castrillo de la Ribera, León</span>
+                            <span>Tfono: 987264285 mail: nazare@hojaldresnazare.es</span>
+                            <span>www.nazaremayorista.com</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 m-2">
-                    <table width="100%" style="border: 1px solid #000000;margin-top: 12px;">
-                        <tbody>
-                            <tr>
-                                <td style="background: black;color: white;" align="center">DESCRIPCION/DESCRIPTION:</td>
-                            </tr>
-                            <tr>
-                                <td height="110px">
-                                    <strong>Producto: </strong>
-                                    <span t-field="line.name"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br/>
-                    <t t-if="doc.name">
-                        <strong>ORDEN DE COMPRA:</strong>
-                        <span t-field="doc.name"/>
-                    </t>
-                    <br/>
-                    <strong>FECHA PO:</strong>
-                    <t t-if="doc.date_order">
-                        <span t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
-                    </t>
-                </div>
-                <div class="col-1 ml-4">
-                    <img src='/report_tags/static/src/img/orientacion.png' style="max-width: 30px;margin-top: 10px;margin-right:50px;"/>
-                </div>
-            </div>
-            <div class="row no-gutters" style="border-left: 1px solid #000000;border-right: 1px solid #000000;">
-                <div class="col-11">
-                    <img t-if="line.product_id.default_code" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.default_code, 600, 120)" style="max-height:35pt;max-width:100%;" align="center"/>
-                </div>
-            </div>
-            <div class="row no-gutters text-right" style="border: 1px solid #000000; border-radius:0px 0px 16px 16px;height: 25px;">
-                <div class="col-12">
-                </div>
-            </div>
-            <div class="row no-gutters mt-1" style="page-break-after:always;">
-                <div class="col-3">
-                </div>
-                <div class="col-6 text-center">
-                    <sub>HANDLE WITH CARE</sub>
-                </div>
-                <div class="col-2 text-right" style="font-size: 8px;">
-                    <sub><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></sub>
-                </div>
-            </div>
+            </td>
         </div>
     </template>
 
     <template id="report_label_master_template">
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <div class="page">
-                    <!-- Content from the first uploaded image for Master Box label -->
-                    <img t-att-src="'/product_label_wizard/static/src/img/caja_master.webp'"/>
-                    <!-- Add additional fields as needed -->
-                </div>
+            <t t-call="nazare_qweb_labels.report_tag_layout_empty">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="nazare_qweb_labels.report_label_base_document"/>
+                </t>
             </t>
         </t>
     </template>
 
     <template id="report_label_granel_template">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <div class="page">
-                    <!-- Content from the second uploaded image for A granel label -->
-                    <img t-att-src="'/product_label_wizard/static/src/img/caja_granel.webp'"/>
-                    <!-- Add additional fields as needed -->
-                </div>
-            </t>
-        </t>
-    </template>
-
-    <template id="report_label_base">
         <t t-call="web.html_container">
             <t t-call="nazare_qweb_labels.report_tag_layout_empty">
                 <t t-foreach="docs" t-as="doc">

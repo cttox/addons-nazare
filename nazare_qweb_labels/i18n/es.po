@@ -1,0 +1,216 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nazare_qweb_labels
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-22 02:49+0000\n"
+"PO-Revision-Date: 2024-07-21 20:58-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.report_label_base_document
+msgid ""
+"<span>Calle Real 110, 24199, Castrillo de la Ribera, León</span>\n"
+"                            <span>Tfono: 987264285 mail: "
+"nazare@hojaldresnazare.es</span>\n"
+"                            <span>www.nazaremayorista.com</span>"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.report_tag_layout_empty
+msgid ""
+"<span>Calle Real 110, 24199, Castrillo de la Ribera, León</span>\n"
+"                    <span>Tfono: 987264285 mail: "
+"nazare@hojaldresnazare.es</span>\n"
+"                    <span>www.nazaremayorista.com</span>"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.report_label_base_document
+msgid "<strong>Consumir preferentemente antes del:</strong>"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.report_label_base_document
+msgid "<strong>Contenido:</strong>"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.report_label_base_document
+msgid "<strong>Ingredientes:</strong>"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.report_label_base_document
+msgid "<strong>Lote:</strong>"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.report_label_base_document
+msgid "<strong>R.D.G.S.:</strong>"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.actions.act_window,name:nazare_qweb_labels.action_open_label_layout_nazare
+msgid "Choose Labels Layout"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model,name:nazare_qweb_labels.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__uom_id
+msgid "Contenido"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__description_pickingout
+msgid "Description Picking Out"
+msgstr "Observación"
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.product_label_layout_nazare_form
+msgid "Discard"
+msgstr "Cancelar"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__id
+msgid "ID"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields.selection,name:nazare_qweb_labels.selection__product_label_layout_nazare__label_type__in_bulk
+msgid "In Bulk"
+msgstr "A granel"
+
+#. module: nazare_qweb_labels
+#: model:ir.actions.report,name:nazare_qweb_labels.report_label_granel
+msgid "In Bulk Label"
+msgstr "Etiqueta a granel"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__ingredients
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_product__ingredients
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.product_normal_form_view
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__label_type
+msgid "Label type"
+msgstr "Tipo de etiqueta"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__lot_id
+msgid "Lot"
+msgstr "Lote"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields.selection,name:nazare_qweb_labels.selection__product_label_layout_nazare__label_type__master_box
+msgid "Master Box"
+msgstr "Caja master"
+
+#. module: nazare_qweb_labels
+#: model:ir.actions.report,name:nazare_qweb_labels.report_label_master
+msgid "Master Box Label"
+msgstr "Etiqueta de caja master"
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.product_label_layout_nazare_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: nazare_qweb_labels
+#: model_terms:ir.ui.view,arch_db:nazare_qweb_labels.product_normal_form_view
+msgid "Print Labels Nazare"
+msgstr "Imprimir etiquetas Nazare"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: nazare_qweb_labels
+#: model:ir.model,name:nazare_qweb_labels.model_product_label_layout_nazare
+msgid "Product Label Nazare"
+msgstr "Etiqueta de producto Nazare"
+
+#. module: nazare_qweb_labels
+#: model:ir.model,name:nazare_qweb_labels.model_product_product
+msgid "Product Variant"
+msgstr "Variantes de producto"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__rdgs
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_res_company__rdgs
+msgid "R.D.G.S"
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,help:nazare_qweb_labels.field_product_label_layout_nazare__use_date
+msgid ""
+"This is the date on which the goods with this Serial Number start "
+"deteriorating, without being dangerous yet."
+msgstr ""
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__title
+msgid "Title"
+msgstr "Título"
+
+#. module: nazare_qweb_labels
+#: model:ir.model.fields,field_description:nazare_qweb_labels.field_product_label_layout_nazare__use_date
+msgid "Use date"
+msgstr "Consumir antes de"

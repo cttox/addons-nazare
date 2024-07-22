@@ -3,11 +3,21 @@
     <data>
         <template id="report_tag_layout_empty">
             <div class="header">
+                <div class="o_label_name text-center">
+                    <h1>
+                        <strong t-field="doc.title"/>
+                    </h1>
+                </div>
             </div>
             <div class="article o_report_layout_standard">
                 <t t-raw="0" />
             </div>
             <div class="footer">
+                <div class="o_label_name text-center" style="font-size: 9pt;">
+                    <span>Calle Real 110, 24199, Castrillo de la Ribera, León</span>
+                    <span>Tfono: 987264285 mail: nazare@hojaldresnazare.es</span>
+                    <span>www.nazaremayorista.com</span>
+                </div>
             </div>
         </template>
     </data>
