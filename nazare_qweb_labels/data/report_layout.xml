@@ -13,11 +13,6 @@
                 <t t-raw="0" />
             </div>
             <div class="footer">
-                <div class="o_label_name text-center" style="font-size: 9pt;">
-                    <span>Calle Real 110, 24199, Castrillo de la Ribera, León</span>
-                    <span>Tfono: 987264285 mail: nazare@hojaldresnazare.es</span>
-                    <span>www.nazaremayorista.com</span>
-                </div>
             </div>
         </template>
     </data>
