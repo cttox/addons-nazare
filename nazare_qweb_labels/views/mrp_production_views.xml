@@ -1,0 +1,14 @@
+<odoo>
+    <record id="mrp_production_form_view" model="ir.ui.view">
+        <field name="name">mrp.production.form.inherit</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <data>
+                <header position="inside">
+                    <button string="Print Labels Nazare" type="object" name="action_open_label_layout_nazare"/>
+                </header>
+            </data>
+        </field>
+    </record>
+</odoo>
