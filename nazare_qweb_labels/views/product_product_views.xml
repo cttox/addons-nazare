@@ -5,13 +5,21 @@
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
             <data>
-                <header position="inside">
+                <!-- <header position="inside">
                     <button string="Print Labels Nazare" type="object" name="action_open_label_layout_nazare"/>
-                </header>
-                <xpath expr="//page[@name='inventory']" position="inside">
-                    <group string="Ingredients">
-                        <field name="ingredients" widget="html"/>
-                    </group>
+                </header> -->
+                <xpath expr="//notebook" position="inside">
+                    <page string="Label Nazare">
+                        <group>
+                            <field name="label_title"/>
+                            <field name="label_quantity"/>
+                            <field name="label_uom_id"/>
+                        </group>
+                        <group string="Ingredients">
+                            <field name="ingredients" widget="html"/>
+                        </group>
+                    </page>
+                    
                 </xpath>
             </data>
         </field>

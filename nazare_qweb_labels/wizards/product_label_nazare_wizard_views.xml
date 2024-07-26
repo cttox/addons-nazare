@@ -14,7 +14,7 @@
                         <field name="rdgs"/>
                     </group>
                     <group>
-                        <field name="use_date"/>
+                        <field name="use_date" force_save="1"/>
                         <field name="quantity"/>
                         <field name="uom_id"/>
                         <field name="label_type" widget="radio"/>

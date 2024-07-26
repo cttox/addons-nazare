@@ -3,11 +3,22 @@
 
 from odoo import fields, models
 
+
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     ingredients = fields.Html(
         string='Ingredients'
+    )
+    label_title = fields.Char(
+        string='Title',
+    )
+    label_quantity = fields.Float(
+        string='Quantity',
+    )
+    label_uom_id = fields.Many2one(
+        'uom.uom',
+        string='Contenido',
     )
 
     def action_open_label_layout_nazare(self):
