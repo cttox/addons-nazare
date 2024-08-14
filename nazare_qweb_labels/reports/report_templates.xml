@@ -20,7 +20,7 @@
                                 </tr>
                                 <tr>
                                     <td class="text-start"><strong>Consumir preferentemente antes del:</strong></td>
-                                    <td class="text-end"><span t-esc="doc.use_date"/></td>
+                                    <td class="text-end"><span t-esc="doc.use_date.strftime('%d-%m-%Y')"/></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start"><strong>R.D.G.S.:</strong></td>
