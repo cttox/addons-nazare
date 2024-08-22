@@ -10,7 +10,7 @@ class ProductProduct(models.Model):
     ingredients = fields.Html(
         string='Ingredients'
     )
-    label_title = fields.Char(
+    label_title = fields.Html(
         string='Title',
     )
     label_quantity = fields.Float(

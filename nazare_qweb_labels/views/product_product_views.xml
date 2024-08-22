@@ -11,7 +11,7 @@
                 <xpath expr="//notebook" position="inside">
                     <page string="Label Nazare">
                         <group>
-                            <field name="label_title"/>
+                            <field name="label_title" widget="html"/>
                             <field name="label_quantity"/>
                             <field name="label_uom_id"/>
                         </group>
