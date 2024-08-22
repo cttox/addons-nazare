@@ -5,7 +5,7 @@
             <div class="header">
                 <div class="o_label_name text-center">
                     <h1>
-                        <strong t-field="doc.title"/>
+                        <strong t-esc="doc.title"/>
                     </h1>
                 </div>
             </div>

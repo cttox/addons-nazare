@@ -71,7 +71,7 @@ class ProductLabelWizard(models.TransientModel):
         readonly=False
     )
 
-    title = fields.Char(
+    title = fields.Html(
         string='Title',
         related='product_id.label_title',
         readonly=False,
