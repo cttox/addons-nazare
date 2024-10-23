@@ -11,9 +11,9 @@ class MrpProduction(models.Model):
             self.ensure_one()
             if self.product_id.tracking == 'lot':
                 if self.product_id.default_code:
-                    first_two = self.product_id.default_code[:2]
+                    first_two = self.product_id.default_code[:1]
                     last_two = self.product_id.default_code[-2:]
-                    current_year = datetime.now().year
+                    current_year = str(datetime.now().year)[-2:]
                     day_of_year = datetime.now().timetuple().tm_yday
                     lot_number = f"{first_two}{last_two}{current_year}{day_of_year:03d}"
 
