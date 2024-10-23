@@ -55,7 +55,4 @@ class GenerateLotWizard(models.TransientModel):
         })
 
         # Open the stock quant tree view
-        # action = self.env.ref('stock.action_update_quantity_on_hand').read()[0]
-        # action['domain'] = [('product_id', '=', self.product_id.id)]
-        # action['context'] = {'search_default_productgroup': 1, 'search_default_internal_loc': 1}
         return self.product_id.action_update_quantity_on_hand()
