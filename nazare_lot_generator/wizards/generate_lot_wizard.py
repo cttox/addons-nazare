@@ -29,11 +29,11 @@ class GenerateLotWizard(models.TransientModel):
     def _compute_preview_lot_number(self):
         for wizard in self:
             if wizard.product_id and wizard.product_id.default_code:
-                first_two = wizard.product_id.default_code[:2]
+                first_one = wizard.product_id.default_code[:1]
                 last_two = wizard.product_id.default_code[-2:]
-                current_year = datetime.now().year
+                current_year = str(datetime.now().year)[-2:]
                 day_of_year = datetime.now().timetuple().tm_yday
-                wizard.preview_lot_number = f"{first_two}{last_two}{current_year}{day_of_year:03d}"
+                wizard.preview_lot_number = f"{first_one}{last_two}{current_year}{day_of_year:03d}"
             else:
                 wizard.preview_lot_number = False
 
